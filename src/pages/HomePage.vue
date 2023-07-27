@@ -1,11 +1,9 @@
 <script setup lang="ts">
-    import Navigation from '../components/Navigation.vue';
     import HomePageModel from '../components/HomePageModel.vue';
 </script>
 
 <template>
     <div class="home__container">
-        <Navigation />
         <main>
             <div class="intro__text">
                 <h1 class="intro__text__title">Create your very own <br> <span class="intro__text__title--colored">soft serve</span></h1>
@@ -14,9 +12,7 @@
                 <router-link to="/configurator" class="cta--startCreation">Start creating</router-link>
             </div>
 
-            <div class="backdrop">
-                <img src="/src/assets/Images/shape2.png" alt="Backdrop shape" tabindex="-1">
-                
+            <div class="backdrop">                
                 <HomePageModel />
             </div>
 
@@ -38,7 +34,7 @@
         flex-direction: row;
         align-items: center;
         width: 100%;
-        height: calc(100% - 100px);
+        height: 100%;
     }
 
     .intro__text{
@@ -100,11 +96,10 @@
         padding: 2rem 0;
         overflow: hidden;
         position: relative;
-    }
-
-    .backdrop img{
-        height: 150%;
-        object-fit: cover;
+        background-image: url('/src/assets/Images/shape2.png');
+        background-repeat: no-repeat;
+        background-position: 80% 40%;
+        background-size: 110%;
     }
 
     .credits{

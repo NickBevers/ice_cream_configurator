@@ -34,6 +34,7 @@
 
         // add the renderer to the page
         document.querySelector('.three__container')!.appendChild(renderer.domElement);
+        document.querySelector<HTMLElement>('.three__container')!.style.paddingTop = '2rem';
     
         // set the camera position and make the model bigger
         camera.position.z = 5;

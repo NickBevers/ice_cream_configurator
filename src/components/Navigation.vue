@@ -25,10 +25,10 @@ import Icon from './Icon.vue'
     background-color: transparent;
     color: black;
     z-index: 1000;
+    padding-left: 0.4rem;
 }
 
 .navigation__icon {
-    padding-left: 0.4rem;
     max-height: 80px;
 }
 
