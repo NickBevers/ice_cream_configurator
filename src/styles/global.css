@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700;800&family=REM:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+:root {
+    font-family: 'REM', sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+
+    color: black;
+    background-color: white;
+
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+
+    --offWhite: #F7F7F7;
+    --offBlack: #232323;
+    --gray: #898989;
+    --mainColor: #e2d4ff;
+
+}
+
+*{
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    display: flex;
+    place-items: center;
+    min-width: 320px;
+    min-height: 100vh;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.25s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+    opacity: 0;
+}
+
+#app {
+    /* max-width: 1280px; */
+    height: 100vh;
+    min-height: 800px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 2rem;
+    text-align: center;
+    box-sizing: border-box;
+    background-color: var(--offWhite);
+}
+
+/* Media query widths */
+/* 
+2xl: 1536px
+xl: 1280px
+lg: 1024px
+md: 768px
+sm: 640px
+xs: 375px
+
+
+*/
