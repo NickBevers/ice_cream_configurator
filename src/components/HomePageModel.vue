@@ -5,10 +5,10 @@
     import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
     import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js';
     
-    
     onMounted(() => {
         // get the width and height of the backdrop container
-        const { width, height } = document.querySelector('.three__container')!.getBoundingClientRect() as DOMRect;
+        let { width, height } = document.querySelector('.three__container')?.getBoundingClientRect() as DOMRect;
+        height < 750 ? height = 750 : height = height;
         
         // set up the scene, camera, renderer, controls, loader, and dracoLoader
         const scene = new THREE.Scene();

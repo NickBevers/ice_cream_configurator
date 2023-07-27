@@ -1,6 +1,6 @@
 <script setup lang="ts">
-    import Navigation from '../components/molecules/Navigation.vue';
-    import ThreeSoftserve from '../components/atoms/three/ThreeSoftserve.vue';
+    import Navigation from '../components/Navigation.vue';
+    import HomePageModel from '../components/HomePageModel.vue';
 </script>
 
 <template>
@@ -8,16 +8,19 @@
         <Navigation />
         <main>
             <div class="intro__text">
-                <h1 class="intro__text__title">Create your very own <br> soft serve</h1>
+                <h1 class="intro__text__title">Create your very own <br> <span class="intro__text__title--colored">soft serve</span></h1>
                 <p class="intro__text__description">Hello and welcome to the soft serve creator.<br>Choose your favourite flavour, toppings and sauce to create your very own soft serve!</p>
+
+                <router-link to="/configurator" class="cta--startCreation">Start creating</router-link>
             </div>
 
             <div class="backdrop">
                 <img src="/src/assets/Images/shape2.png" alt="Backdrop shape" tabindex="-1">
                 
-                <ThreeSoftserve />
+                <HomePageModel />
             </div>
 
+            <p class="credits">Made by <a href="https://nickbevers.be">Nick Bevers</a></p>
         </main>
     </div>
 </template>
@@ -60,10 +63,32 @@
         line-height: 120%;
     }
 
+    .intro__text__title--colored{
+        color: var(--mainColor);
+        /* color: white; */
+    }
+
     .intro__text__description{
         font-size: 1.25rem;
         font-weight: 300;
         margin: 0;
+    }
+
+    .cta--startCreation{
+        margin-top: 4rem;
+        padding: 1rem 2rem;
+        background-color: var(--offBlack);
+        color: white;
+        font-size: 1.25rem;
+        font-weight: 600;
+        text-decoration: none;
+        border-radius: 0.5rem;
+        transition: background-color 0.25s ease-in-out, color 0.25s ease-in-out;
+    }
+
+    .cta--startCreation:hover{
+        background-color: var(--mainColor);
+        color: black;
     }
 
     .backdrop{
@@ -80,6 +105,24 @@
     .backdrop img{
         height: 150%;
         object-fit: cover;
+    }
+
+    .credits{
+        position: absolute;
+        bottom: -1.5rem;
+        right: 0.5rem;
+        margin: 0;
+        padding: 0.5rem;
+        font-weight: 300;
+        color: var(--gray);
+        transform: rotate(90deg);
+        transform-origin: top right;
+    }
+
+    .credits a{
+        margin-left: 0.1rem;
+        color: black;
+        text-decoration: none;
     }
 
 </style>
