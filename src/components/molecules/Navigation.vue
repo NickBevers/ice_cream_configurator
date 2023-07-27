@@ -1,0 +1,66 @@
+<script setup lang="ts">
+import Icon from '../atoms/Icon.vue'
+</script>
+
+<template>
+    <nav class="navigation">
+        <div class="navigation__icon">
+            <Icon src="/src/assets/Images/logo_semibold.svg" />
+        </div>
+        <div class="navigation__links">
+            <router-link to="/" class="navigation__link">Home</router-link>
+            <router-link to="/about" class="navigation__link">About</router-link>
+            <router-link to="/configurator" class="navigation__link">Configurator</router-link>
+        </div>
+    </nav>
+</template>
+
+<style scoped>
+.navigation {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: transparent;
+    color: black;
+    z-index: 1000;
+}
+
+.navigation__icon {
+    padding-left: 0.4rem;
+    max-height: 80px;
+}
+
+.navigation__icon img {
+    max-height: 80px;
+}
+
+.navigation__links {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-width: 400px;
+    margin-right: 1rem;
+    gap: 1.5rem;
+}
+
+.navigation__link {
+    text-decoration: none;
+    color: var(--gray);
+    font-size: 1.2rem;
+    margin: 0 1rem;
+    text-transform: uppercase;
+    transition: color 0.25s ease-in-out;
+}
+
+
+.router-link-active, .navigation__link:hover {
+    color: black;
+    position: relative;
+    text-decoration: underline;
+    text-underline-offset: 0.6rem;
+    text-decoration-thickness: 0.15rem;
+}
+</style>
