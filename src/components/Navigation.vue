@@ -5,7 +5,7 @@ import Icon from './Icon.vue'
 <template>
     <nav class="navigation">
         <div class="navigation__icon">
-            <Icon src="/src/assets/Images/logo_semibold.svg" />
+            <router-link to="/"><Icon src="/src/assets/Images/logo_semibold.svg" /></router-link>
         </div>
         <div class="navigation__links">
             <router-link to="/" class="navigation__link">Home</router-link>
@@ -55,12 +55,18 @@ import Icon from './Icon.vue'
     transition: color 0.25s ease-in-out;
 }
 
-
 .router-link-active, .navigation__link:hover {
-    color: black;
-    position: relative;
     text-decoration: underline;
     text-underline-offset: 0.6rem;
     text-decoration-thickness: 0.15rem;
+}
+
+.router-link-active {
+    position: relative;
+    color: black;
+}
+
+.navigation__link:hover {
+    color: var(--gray);
 }
 </style>

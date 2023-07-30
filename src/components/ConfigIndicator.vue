@@ -1,55 +1,38 @@
 <script setup lang="ts">
     let visuals = new Array<number>(1, 2, 3);
 
-    const emit = defineEmits(['update:currentVisual']);
+    const emit = defineEmits(['update:currentPhase']);
 
     const props = defineProps({
-        currentVisual: Number
+        currentPhase: Number
     });
-    let currentVisual = props.currentVisual;
+    // let currentPhase = props.currentPhase;
 
-    // create an interface for the visual event to get the textContent of the clicked circle
     interface VisualEvent extends Event {
         target: HTMLDivElement
     }
 
     const handleClick = (event: Event) => {
-        // get the textContent of the clicked circle
         const textContent = (event as VisualEvent).target.textContent;
-        console.log(textContent);
-
-        // set the currentVisual to the textContent of the clicked circle
-        currentVisual = Number(textContent);
-
-        // update the circle colors
+        // currentPhase = Number(textContent);
         updateCircleColors();
-
-        // emit the currentVisual to the parent
-        emit('update:currentVisual', {detail: currentVisual});
+        emit('update:currentPhase', {detail: Number(textContent)});
     }
 
     const updateCircleColors = () => {
-        // get all the circles
         const circles = document.querySelectorAll('.fase__Indicator__circle');
-
-        // loop through all the circles
         circles.forEach(circle => {
-            // get the textContent of the circle
             const textContent = circle.textContent;
-
-            // if the textContent is smaller than the currentVisual, set the circle to past
-            if (Number(textContent) < currentVisual!) {
+            if (Number(textContent) < props.currentPhase!) {
                 circle.classList.remove('fase__Indicator__circle--future');
                 circle.classList.remove('fase__Indicator__circle--current');
                 circle.classList.add('fase__Indicator__circle--past');
             }
-            // if the textContent is equal to the currentVisual, set the circle to current
-            else if (Number(textContent) === currentVisual!) {
+            else if (Number(textContent) === props.currentPhase!) {
                 circle.classList.remove('fase__Indicator__circle--future');
                 circle.classList.remove('fase__Indicator__circle--past');
                 circle.classList.add('fase__Indicator__circle--current');
             }
-            // if the textContent is bigger than the currentVisual, set the circle to future
             else {
                 circle.classList.remove('fase__Indicator__circle--past');
                 circle.classList.remove('fase__Indicator__circle--current');
@@ -63,8 +46,8 @@
 <template>
     <div class="fase__Indicator">
         <div v-for="visual in visuals" @click="handleClick">
-            <div v-if="visual === currentVisual" class="fase__Indicator__circle fase__Indicator__circle--current">{{ visual }}</div>
-            <div v-else-if="visual < currentVisual!" class="fase__Indicator__circle fase__Indicator__circle--past">{{ visual }}</div>
+            <div v-if="visual === props.currentPhase" class="fase__Indicator__circle fase__Indicator__circle--current">{{ visual }}</div>
+            <div v-else-if="visual < props.currentPhase!" class="fase__Indicator__circle fase__Indicator__circle--past">{{ visual }}</div>
             <div v-else class="fase__Indicator__circle fase__Indicator__circle--future">{{ visual }}</div>
         </div>
     </div>

@@ -8,7 +8,8 @@
     onMounted(() => {
         // get the width and height of the backdrop container
         let { width, height } = document.querySelector('.three__container')?.getBoundingClientRect() as DOMRect;
-        height < 750 ? height = 750 : height = height;
+        // height < 750 ? height = document.querySelector('.backdrop')!.getBoundingClientRect()['height'] : height = height;
+        height < 750 ? height = 900 : height = height;
         
         // set up the scene, camera, renderer, controls, loader, and dracoLoader
         const scene = new THREE.Scene();
@@ -123,7 +124,7 @@
         width: 100%;
         height: 100%;
         position: absolute;
-        top: 0;
+        top: 32px;
         left: 0;
         z-index: 1;
     }
