@@ -7,18 +7,26 @@
         currentPhase: Number
     });
 
-    const emit = defineEmits(['setFlavour', 'changePhase']);
+    const emit = defineEmits(['setFlavour', 'setTopping', 'changePhase']);
 
     const changeFlavour = (flavour: string) => {
         emit('setFlavour', flavour);
+    }
+
+    const changeTopping = (topping: string) => {
+        emit('setTopping', topping);
+    }
+
+    const changePhase = (phase: number) => {
+        emit('changePhase', phase);
     }
 
 </script>
 
 <template>
     <div class="configurator-side-bar">
-        <Phase1 v-if="props.currentPhase === 1" @set-flavour="changeFlavour"/>
-        <Phase2 v-if="props.currentPhase === 2" />
+        <Phase1 v-if="props.currentPhase === 1" @set-flavour="changeFlavour" @change-phase="changePhase"/>
+        <Phase2 v-if="props.currentPhase === 2" @set-topping="changeTopping" @change-phase="changePhase"/>
         <Phase3 v-if="props.currentPhase === 3" />
     </div>
 </template>

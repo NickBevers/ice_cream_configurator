@@ -10,6 +10,10 @@
         emit('setFlavour', flavour.value);
     }
 
+    const nextStep = () => {
+        emit('changePhase', 2);
+    }
+
 </script>
 
 <template>
@@ -36,9 +40,7 @@
             </div>
         </div>
 
-        <p class="nextStep">
-            Next Step <img class="arrow--right" src="/src/assets/Images/arrow--right.svg">
-        </p>
+        <p class="nextStep" @click="nextStep">Next Step <img class="arrow--right" src="/src/assets/Images/arrow--right.svg"></p>
     </div>
 </template>
 

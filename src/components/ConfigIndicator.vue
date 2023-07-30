@@ -16,7 +16,7 @@
         const textContent = (event as VisualEvent).target.textContent;
         // currentPhase = Number(textContent);
         updateCircleColors();
-        emit('update:currentPhase', {detail: Number(textContent)});
+        emit('update:currentPhase', Number(textContent));
     }
 
     const updateCircleColors = () => {
@@ -75,6 +75,7 @@
         border-radius: 50%;
         margin: 0 1rem;
         text-align: center;
+        cursor: pointer;
     }
 
     .fase__Indicator__circle--current, .fase__Indicator__circle--past{

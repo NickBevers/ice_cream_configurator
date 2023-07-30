@@ -6,27 +6,29 @@
 
     const currentPhase: Ref<number> = ref(1);
 
-    // create an interface for the visual event to get the textContent of the clicked circle
-    interface VisualChangeEvent extends Event {
-        detail: number
-    }
-
     // data to be stored in the database
     const data = {
         flavour: '',
         cupColor: '',
         logoUrl: '',
         logoPID: '',
-        toppings: [],
+        toppings: '',
     }
 
-    const stepChange = (event: VisualChangeEvent) => {
-        currentPhase.value = event.detail;
+    // const stepChange = (event: VisualChangeEvent) => {
+    //     currentPhase.value = event.detail;
+    // }
+
+    const changePhase = (phase: number) => {
+        currentPhase.value = phase;
     }
 
     const changeFlavour = (flavour: string) => {
         data.flavour = flavour;
-        currentPhase.value = 2;
+    }
+
+    const changeTopping = (topping: string) => {
+        data.toppings = topping;
     }
 
     // chocolate sauce: 4D1F0C
@@ -35,10 +37,10 @@
 
 <template>
     <div class="configurator__container">
-        <ConfigIndicator :current-phase="currentPhase" @update:current-phase="stepChange"/>
+        <ConfigIndicator :current-phase="currentPhase" @update:current-phase="changePhase"/>
 
         <!-- Left side panel with options for the user width 33% -->
-        <ConfiguratorSideBar :current-phase="currentPhase" @set-flavour="changeFlavour"/>
+        <ConfiguratorSideBar :current-phase="currentPhase" @set-flavour="changeFlavour" @set-topping="changeTopping" @change-phase="changePhase"/>
 
         <!-- ThreeJS part that wont change except for colors width 66% -->
         <Configurator />
