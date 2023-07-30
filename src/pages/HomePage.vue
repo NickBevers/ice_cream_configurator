@@ -78,7 +78,6 @@
         font-size: 1.25rem;
         font-weight: 600;
         text-decoration: none;
-        border-radius: 0.5rem;
         transition: background-color 0.25s ease-in-out, color 0.25s ease-in-out;
     }
 
