@@ -1,5 +1,5 @@
 <script setup lang="ts">
-    let visuals = new Array<number>(1, 2, 3);
+    let visuals = new Array<number>(1, 2, 3, 4);
 
     const emit = defineEmits(['update:currentPhase']);
 

@@ -1,8 +1,12 @@
 <script setup lang="ts">
     import { ref, Ref } from 'vue';
 
+    const props = defineProps({
+        flavour: String,
+    });
+
     const emit = defineEmits(['setFlavour', 'changePhase']);
-    const flavour: Ref<string> = ref('');
+    const flavour: Ref<string> = ref(props.flavour ?props.flavour :'');
 
     const changeFlavour = (event: Event) => {
         const target = event.target as HTMLInputElement;
@@ -64,6 +68,7 @@
 
     .phase1__description p{
         margin: 0;
+        font-size: 1rem;
     }
 
     .flavour__images{

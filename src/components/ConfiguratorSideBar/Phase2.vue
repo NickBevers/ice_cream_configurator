@@ -1,10 +1,13 @@
 <script setup lang="ts">
-
     import { ref, Ref } from 'vue';
 
     const emit = defineEmits(['setTopping', 'changePhase']);
+
+    const props = defineProps({
+        topping: String,
+    });
     
-    const topping: Ref<string> = ref('');
+    const topping: Ref<string> = ref(props.topping ?props.topping :'');
 
     const handleTopping = (event: Event) => {
         const target = event.target as HTMLInputElement;
@@ -73,6 +76,7 @@
 
     .phase2__description p{
         margin: 0;
+        font-size: 1rem;
     }
 
     .topping__images{
@@ -140,6 +144,7 @@
         padding-left: 0;
         padding-right: 0;
         margin: 2rem 0 0 0;
+        font-size: 1.25rem;
         cursor: pointer;
     }
 

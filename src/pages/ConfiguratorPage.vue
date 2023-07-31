@@ -12,7 +12,7 @@
         cupColor: '',
         logoUrl: '',
         logoPID: '',
-        toppings: '',
+        topping: '',
     }
 
     // const stepChange = (event: VisualChangeEvent) => {
@@ -28,7 +28,7 @@
     }
 
     const changeTopping = (topping: string) => {
-        data.toppings = topping;
+        data.topping = topping;
     }
 
     // chocolate sauce: 4D1F0C
@@ -40,7 +40,7 @@
         <ConfigIndicator :current-phase="currentPhase" @update:current-phase="changePhase"/>
 
         <!-- Left side panel with options for the user width 33% -->
-        <ConfiguratorSideBar :current-phase="currentPhase" @set-flavour="changeFlavour" @set-topping="changeTopping" @change-phase="changePhase"/>
+        <ConfiguratorSideBar :current-phase="currentPhase" @set-flavour="changeFlavour" @set-topping="changeTopping" @change-phase="changePhase" :flavour="data.flavour" :topping="data.topping"/>
 
         <!-- ThreeJS part that wont change except for colors width 66% -->
         <Configurator />

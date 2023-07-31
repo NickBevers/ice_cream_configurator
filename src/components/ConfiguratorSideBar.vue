@@ -4,7 +4,9 @@
     import Phase3 from '../components/ConfiguratorSideBar/Phase3.vue';
 
     const props = defineProps({
-        currentPhase: Number
+        currentPhase: Number,
+        flavour: String,
+        topping: String,
     });
 
     const emit = defineEmits(['setFlavour', 'setTopping', 'changePhase']);
@@ -25,8 +27,8 @@
 
 <template>
     <div class="configurator-side-bar">
-        <Phase1 v-if="props.currentPhase === 1" @set-flavour="changeFlavour" @change-phase="changePhase"/>
-        <Phase2 v-if="props.currentPhase === 2" @set-topping="changeTopping" @change-phase="changePhase"/>
+        <Phase1 v-if="props.currentPhase === 1" @set-flavour="changeFlavour" @change-phase="changePhase" :flavour="props.flavour"/>
+        <Phase2 v-if="props.currentPhase === 2" @set-topping="changeTopping" @change-phase="changePhase" :topping="props.topping"/>
         <Phase3 v-if="props.currentPhase === 3" />
     </div>
 </template>

@@ -19,6 +19,7 @@
     --gray: #898989;
     --lightGray: #D8D8D8;
     --mainColor: #e2d4ff;
+    /* rgb(226, 212, 255) ↑ */
     --mainColorLight: #f2eaff;
 
 }
@@ -45,6 +46,14 @@ body {
     opacity: 0;
 }
 
+p{
+    font-size: 1rem;
+}
+
+.hidden{
+    display: none;
+}
+
 #app {
     /* max-width: 1280px; */
     height: 100vh;
@@ -54,6 +63,14 @@ body {
     padding: 2rem;
     text-align: center;
     box-sizing: border-box;
+    background-color: var(--offWhite);
+}
+
+.n-color-picker-trigger{
+    border: none;
+}
+
+.n-color-picker-panel{
     background-color: var(--offWhite);
 }
 
