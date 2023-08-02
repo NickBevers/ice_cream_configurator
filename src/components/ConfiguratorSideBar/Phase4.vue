@@ -1,65 +1,56 @@
 <script setup lang="ts">
     import { ref, Ref } from 'vue';
 
-    const emit = defineEmits(['setTopping', 'changePhase']);
-
     const props = defineProps({
-        topping: String,
+        email: String,
     });
-    
-    const topping: Ref<string> = ref(props.topping ?props.topping :'');
 
-    const handleTopping = (event: Event) => {
-        const target = event.target as HTMLInputElement;
-        target.id ? topping.value = target.id.split('--')[1] : topping.value = target.children[0].id.split('--')[1];
-        emit('setTopping', topping.value);
-    }
+    const email: Ref<string> = ref(props.email ?props.email :'');
+    const name: Ref<string> = ref('');
+
+    const emit = defineEmits(['createSoftServe', 'changePhase']);
 
     const previousStep = () => {
-        emit('changePhase', 1);
+        emit('changePhase', 3);
     }
 
-    const nextStep = () => {
-        if (topping.value === '') return;
-        emit('changePhase', 3);
+    const makeCreation = () => {
+        if (email.value === '' || name.value === '') return;
+        // TODO: save everything to the database and send the email
+        emit('createSoftServe', {email: email.value, name: name.value});
     }
 
 </script>
 
 <template>
-    <div class="topping__container">
-        <div class="phase2__description">
-            <h1>Step 2</h1>
-            <p>Select the topping you'd like</p>
+    <div class="confirmation__container">
+        <div class="confirmation__description">
+            <h1>Finalization</h1>
+            <p>Thank you for creating your personal softserve. <br>
+                Fill in your email below and we'll send you your creation!</p>
         </div>
-        <div class="topping__options">
 
-            <div class="topping__option" :class="topping === 'chocolateSauce' ?'selected' :''" @click="handleTopping">
-                <p id="topping--chocolateSauce">Chocolate sauce</p>
-            </div>
-            
-            <div class="topping__option" :class="topping === 'strawberrySauce' ?'selected' :''" @click="handleTopping">
-                <p id="topping--strawberrySauce">Strawberry sauce</p>
-            </div>
-            
-            <div class="topping__option" :class="topping === 'mnm' ?'selected' :''" @click="handleTopping">
-                <p id="topping--mnm">M&M's</p>
+        <div class="email__container">
+            <div class="input__container">
+                <label for="name">Name</label>
+                <input type="text" class="name__input" placeholder="Your name" v-model="name">
             </div>
 
-            <div class="topping__option" :class="topping === 'sprinkles' ?'selected' :''" @click="handleTopping">
-                <p id="topping--sprinkles">Sprinkles</p>
+            <div class="input__container">
+                <label for="email">Email</label>
+                <input type="email" class="email__input" placeholder="Your email" v-model="email">
             </div>
         </div>
 
         <div class="button__container">
             <p class="previousStep" @click="previousStep"><img class="arrow--left" src="/src/assets/Images/arrow--left.svg"> Previous Step</p>
-            <p class="nextStep" :class="props.topping!.length <=0 ?'disabled' :''" @click="nextStep">Next Step <img class="arrow--right" src="/src/assets/Images/arrow--right.svg"></p>
+            <p class="nextStep" @click="makeCreation">Create it!<img class="arrow--right" src="/src/assets/Images/arrow--right.svg"></p>
         </div>
     </div>
 </template>
 
 <style scoped>
-    .topping__container{
+    .confirmation__container{
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -75,45 +66,58 @@
         margin-bottom: 0;
     }
 
-    .phase2__description p{
+    .confirmation__description p{
         margin: 0;
+        margin-top: 0.4rem;
         font-size: 1rem;
+        text-align: left;
     }
 
-    .topping__images{
-        width: 150px;
-        height: 150px;
-        object-fit: contain;
-    }
-
-    .topping__options{
+    .email__container{
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: space-evenly;
-        flex-wrap: wrap;
+        justify-content: start;
         width: 100%;
+        height: 100%;
+        background-color: transparent;
+        min-height: fit-content;
+        margin-top: 2.5rem;
     }
-    
-    .topping__option{
+
+    .input__container{
         display: flex;
         flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        margin: 1% 3%;
-        width: 40%;
-        padding: 0 8%;
-        background-color: var(--lightGray);
-        cursor: pointer;
+        align-items: flex-start;
+        justify-content: space-between;
+        margin-bottom: 2.5rem;
     }
 
-    .topping__option:hover{
-        background-color: var(--mainColorLight);
+    .input__container label{
+        font-size: 0.9rem;
+        margin-bottom: 0.5rem;
     }
 
-    .selected{
-        background-color: var(--mainColor);
+    input{
+        width: 26.5rem;
+        height: 3rem;
+        border: none;
+        border: 2px solid var(--offBlack);
+        background: transparent;
+        padding-left: 1rem;
+        outline: none;
+        font-size: 1rem;
+        font-family: 'REM', sans-serif;
     }
+
+    input:active, input:focus{
+        background: white;
+    }
+
+    input::placeholder{
+        color: var(--offBlack);
+    }
+
 
     .button__container{
         display: flex;

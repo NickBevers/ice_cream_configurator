@@ -1,7 +1,9 @@
 <script setup lang="ts">
-    import { ref, Ref } from 'vue';
+    import { ref, Ref, watch } from 'vue';
 
-    const emit = defineEmits(['setTopping', 'changePhase']);
+    const emit = defineEmits(['setLogo', 'setColor', 'changePhase']);
+    const fileName: Ref<String> = ref('Choose a file');
+    const cupColor: Ref<String> = ref('#e2d4ff');
 
     const previousStep = () => {
         emit('changePhase', 2);
@@ -11,8 +13,10 @@
         emit('changePhase', 4);
     }
 
-    const fileName: Ref<String> = ref('Choose a file');
-    const cupColor: Ref<String> = ref('#e2d4ff');
+    watch(cupColor, (newValue) => {
+        emit('setColor', newValue);
+    });
+
 
     const uploadImage = async (event: Event) => {
         const target = event.target as HTMLInputElement;
@@ -36,6 +40,8 @@
             const imagePreview = document.querySelector('.image__preview__holder') as HTMLImageElement;
             imagePreview.src = data.secure_url;
             imagePreview.classList.remove('hidden');
+
+            emit('setLogo', data.secure_url);
 
 
             // TODO: save the image url to the database
@@ -114,7 +120,7 @@
         margin: 0;
         font-size: 1rem;
         width: 26.5rem;
-        margin-bottom: 2rem;
+        /* margin-bottom: 2rem; */
     }
 
     .customization__options{
@@ -139,10 +145,6 @@
         align-items: start;
         justify-content: center;
         width: clamp(12.5rem, 100%, 26.5rem);
-    }
-
-    .color__option{
-        margin-bottom: 1rem;
     }
 
     .image__option{
@@ -207,9 +209,14 @@
         width: 100%;
     } */
 
+    .image__container p{
+        margin: 0;
+        margin-bottom: 1rem;
+    }
+
     .image__preview, .image__preview__holder{
         max-height: 150px;
-        max-width: 360px;
+        max-width: 210px;
     }
 
     .image__preview__holder{

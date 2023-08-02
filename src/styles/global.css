@@ -1,10 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700;800&family=REM:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 :root {
-    font-family: 'REM', sans-serif;
-    line-height: 1.5;
-    font-weight: 400;
-
     color: black;
     background-color: white;
 
@@ -26,6 +22,7 @@
 
 *{
     box-sizing: border-box;
+    font-family: 'REM', sans-serif;
 }
 
 body {
@@ -52,6 +49,20 @@ p{
 
 .hidden{
     display: none;
+}
+
+.disabled{
+    background-color: var(--gray) !important;
+    color: var(--offWhite) !important;
+    cursor: not-allowed !important;
+}
+
+.disabled .arrow--right{
+    filter: invert(100%) !important;
+}
+
+.disabled .nextStep:hover .arrow--right{
+    filter: invert(100%);
 }
 
 #app {

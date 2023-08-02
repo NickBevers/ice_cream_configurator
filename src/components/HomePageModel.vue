@@ -47,10 +47,10 @@
         
         // dracoLoader.preload();
         loader.setDRACOLoader(dracoLoader);
-        const loadModel = (position: Array<number> = [0, 0.11, 0], rotation: Array<number> = [0.2, 0, 0], scale: Array<number> = [1, 1, 1]) => {
+        const loadModel = (position: Array<number> = [0, 0.15, 0], rotation: Array<number> = [0.2, 0, 0], scale: Array<number> = [1, 1, 1]) => {
             // Load the donut model
             loader.load(
-                '/src/assets/Models/softserve.gltf',
+                '/src/assets/Models/homepage_model.gltf',
 
                 (gltf) => {
                     const root = gltf.scene;

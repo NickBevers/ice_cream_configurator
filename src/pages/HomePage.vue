@@ -16,7 +16,7 @@
                 <HomePageModel />
             </div>
 
-            <p class="credits">Made by <a href="https://nickbevers.be">Nick Bevers</a></p>
+            <p class="credits">Made by <a href="https://nickbevers.be" target="_blank">Nick Bevers</a></p>
         </main>
     </div>
 </template>

@@ -9,7 +9,6 @@ import Icon from './Icon.vue'
         </div>
         <div class="navigation__links">
             <router-link to="/" class="navigation__link">Home</router-link>
-            <router-link to="/about" class="navigation__link">About</router-link>
             <router-link to="/configurator" class="navigation__link">Configurator</router-link>
         </div>
     </nav>
@@ -41,7 +40,7 @@ import Icon from './Icon.vue'
     display: flex;
     justify-content: space-between;
     align-items: center;
-    min-width: 400px;
+    min-width: 300px;
     margin-right: 1rem;
     gap: 1.5rem;
 }

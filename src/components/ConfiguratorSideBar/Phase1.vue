@@ -7,16 +7,23 @@
 
     const emit = defineEmits(['setFlavour', 'changePhase']);
     const flavour: Ref<string> = ref(props.flavour ?props.flavour :'');
-
+    
     const changeFlavour = (event: Event) => {
         const target = event.target as HTMLInputElement;
-        flavour.value = target.id.split('--')[1];
+        if (target.classList.contains('flavour__option')){
+            flavour.value = target.children[0].id.split('--')[1];
+        } else{
+            flavour.value = target.parentElement!.children[0].id.split('--')[1];
+        }
         emit('setFlavour', flavour.value);
     }
 
     const nextStep = () => {
+        if (flavour.value === '') return;
         emit('changePhase', 2);
     }
+
+    console.log(props.flavour);
 
 </script>
 
@@ -44,7 +51,7 @@
             </div>
         </div>
 
-        <p class="nextStep" @click="nextStep">Next Step <img class="arrow--right" src="/src/assets/Images/arrow--right.svg"></p>
+        <p class="nextStep" :class="props.flavour!.length <=0 ?'disabled' :''" @click="nextStep">Next Step <img class="arrow--right" src="/src/assets/Images/arrow--right.svg"></p>
     </div>
 </template>
 
@@ -96,12 +103,22 @@
         padding: 0 10%;
     }
 
-    .flavour__option:hover{
-        outline: 3px solid var(--mainColor);
+    .flavour__option img{
+        opacity: 0.5;
+        transition: opacity 0.25s ease-in-out;
     }
 
-    .selected{
-        outline: 3px solid var(--mainColor);
+    .flavour__option label{
+        color: var(--gray);
+        transition: color 0.25s ease-in-out;
+    }
+
+    .flavour__option:hover img, .selected img{
+        opacity: 1;
+    }
+
+    .flavour__option:hover label, .selected label{
+        color: var(--offBlack);
     }
 
     .nextStep{
