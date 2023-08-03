@@ -26,7 +26,7 @@
     <div class="confirmation__container">
         <div class="confirmation__description">
             <h1>Finalization</h1>
-            <p>Thank you for creating your personal softserve. <br>
+            <p>Thank you for creating your personal softserve. <br class="break--desktop">
                 Fill in your email below and we'll send you your creation!</p>
         </div>
 
@@ -44,7 +44,7 @@
 
         <div class="button__container">
             <p class="previousStep" @click="previousStep"><img class="arrow--left" src="/src/assets/Images/arrow--left.svg"> Previous Step</p>
-            <p class="nextStep" @click="makeCreation">Create it!<img class="arrow--right" src="/src/assets/Images/arrow--right.svg"></p>
+            <p class="nextStep" :class="name.length > 0 && email.length > 0 ?'' :'disabled'" @click="makeCreation">Create it!<img class="arrow--right" src="/src/assets/Images/arrow--right.svg"></p>
         </div>
     </div>
 </template>
@@ -64,6 +64,10 @@
 
     h1{
         margin-bottom: 0;
+    }
+
+    .break--desktop{
+        display: block;
     }
 
     .confirmation__description p{
@@ -118,71 +122,51 @@
         color: var(--offBlack);
     }
 
+    @media screen and (max-width: 1024px){
+        .confirmation__container{
+            width: 90%;
+            margin-left: 10%;
+        }
 
-    .button__container{
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-evenly;
-        width: 100%;
+        .input__container{
+            width: 100%;
+        }
+
+        input{
+            width: 100%;
+        }
     }
 
-    .nextStep{
-        width: 12.5rem;
-        margin-top: 2rem;
-        margin-bottom: 0;
-        padding: 0.8rem 2rem;
-        background-color: var(--offBlack);
-        color: white;
-        font-size: 1.25rem;
-        font-weight: 600;
-        text-decoration: none;
-        transition: background-color 0.25s ease-in-out, color 0.25s ease-in-out;
-        cursor: pointer;
-        max-width: 12.5rem;
+    @media screen and (max-width: 768px){
+        .confirmation__container{
+            margin-top: 0;
+            height: 90%;
+            width: 90%;
+            margin-left: 0;
+        }
+
+        .confirmation__description{
+            width: 100%;
+            margin-bottom: 2rem;
+        }
+
+        .confirmation__description p{
+            width: 100%;
+        }
+
+        .email__container{
+            width: 100%;
+            padding-right: 3rem;
+        }
     }
 
-    .previousStep{
-        width: 12.5rem;
-        padding-top: 0.8rem;
-        padding-bottom: 0.8rem;
-        padding-left: 0;
-        padding-right: 0;
-        margin: 2rem 0 0 0;
-        font-size: 1.25rem;
-        cursor: pointer;
-    }
+    @media screen and (max-width: 480px) {
+        .confirmation__description p{
+            font-size: 0.9rem;
+        }
 
-    .nextStep:hover{
-        background-color: var(--mainColor);
-        color: black;
-    }
-
-    .previousStep:hover{
-        color: var(--mainColor);
-
-    }
-
-    .arrow--right{
-        filter: invert(100%);
-        height: 1.2rem;
-        margin-bottom: -0.2rem;
-        margin-left: 0.5rem;
-        transition: all 0.25s ease-in-out;
-    }
-
-    .arrow--left{
-        height: 1.2rem;
-        margin-bottom: -0.2rem;
-        margin-left: 0;
-        margin-right: 0.5rem;
-    }
-
-    .nextStep:hover .arrow--right{
-        filter: invert(0%);
-    }
-
-    .previousStep:hover .arrow--left{
-        filter: invert(84%) sepia(45%) saturate(610%) hue-rotate(192deg) brightness(102%) contrast(101%);
+        .break--desktop{
+            display: none;
+        }
     }
 </style>

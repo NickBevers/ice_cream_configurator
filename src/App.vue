@@ -23,4 +23,11 @@
         z-index: 1000;
     }
 
+    @media screen and (max-width: 480px) {
+        .navigation{
+            padding: 0 1rem;
+            margin-top: 0.5rem;
+        }
+    }
+
 </style>

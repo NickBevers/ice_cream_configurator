@@ -105,6 +105,7 @@
         padding: 0 8%;
         background-color: var(--lightGray);
         cursor: pointer;
+        min-width: 18.75rem;
     }
 
     .topping__option:hover{
@@ -115,70 +116,11 @@
         background-color: var(--mainColor);
     }
 
-    .button__container{
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-evenly;
-        width: 100%;
-    }
-
-    .nextStep{
-        width: 12.5rem;
-        margin-top: 2rem;
-        margin-bottom: 0;
-        padding: 0.8rem 2rem;
-        background-color: var(--offBlack);
-        color: white;
-        font-size: 1.25rem;
-        font-weight: 600;
-        text-decoration: none;
-        transition: background-color 0.25s ease-in-out, color 0.25s ease-in-out;
-        cursor: pointer;
-        max-width: 12.5rem;
-    }
-
-    .previousStep{
-        width: 12.5rem;
-        padding-top: 0.8rem;
-        padding-bottom: 0.8rem;
-        padding-left: 0;
-        padding-right: 0;
-        margin: 2rem 0 0 0;
-        font-size: 1.25rem;
-        cursor: pointer;
-    }
-
-    .nextStep:hover{
-        background-color: var(--mainColor);
-        color: black;
-    }
-
-    .previousStep:hover{
-        color: var(--mainColor);
-
-    }
-
-    .arrow--right{
-        filter: invert(100%);
-        height: 1.2rem;
-        margin-bottom: -0.2rem;
-        margin-left: 0.5rem;
-        transition: all 0.25s ease-in-out;
-    }
-
-    .arrow--left{
-        height: 1.2rem;
-        margin-bottom: -0.2rem;
-        margin-left: 0;
-        margin-right: 0.5rem;
-    }
-
-    .nextStep:hover .arrow--right{
-        filter: invert(0%);
-    }
-
-    .previousStep:hover .arrow--left{
-        filter: invert(84%) sepia(45%) saturate(610%) hue-rotate(192deg) brightness(102%) contrast(101%);
+    @media screen and (max-width: 768px){
+        .topping__container{
+            margin-top: 0;
+            height: 90%;
+            width: 90%;
+        }
     }
 </style>

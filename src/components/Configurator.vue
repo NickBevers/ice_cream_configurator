@@ -43,6 +43,12 @@
         // scene.background = new THREE.Color(0xCAE3E8);
         const camera = new THREE.PerspectiveCamera(60, domElement.offsetWidth / domElement.offsetHeight, 0.01, 1000);
         camera.position.set(0, 0, 0.5);
+
+        if (sizes.width < 500) {
+            camera.zoom = 0.7;
+            camera.updateProjectionMatrix();
+        }
+
         const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
         let logoMaterial = new THREE.MeshBasicMaterial({ map: new THREE.TextureLoader().load(image.value), side: THREE.DoubleSide, });
         const controls = new OrbitControls(camera, renderer.domElement);
@@ -347,15 +353,8 @@
 <style scoped>
 
     .configurator__threejs{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        width: 66%;
-        height: calc(100% - 150px);
-        background-image: url('/src/assets/Images/shape4.png');
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: contain;
+        width: 100%;
+        height: 100%;
+        background-color: transparent;
     }
 </style>

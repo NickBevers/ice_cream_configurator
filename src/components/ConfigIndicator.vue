@@ -20,23 +20,23 @@
     }
 
     const updateCircleColors = () => {
-        const circles = document.querySelectorAll('.fase__Indicator__circle');
+        const circles = document.querySelectorAll('.fase__indicator__circle');
         circles.forEach(circle => {
             const textContent = circle.textContent;
             if (Number(textContent) < props.currentPhase!) {
-                circle.classList.remove('fase__Indicator__circle--future');
-                circle.classList.remove('fase__Indicator__circle--current');
-                circle.classList.add('fase__Indicator__circle--past');
+                circle.classList.remove('fase__indicator__circle--future');
+                circle.classList.remove('fase__indicator__circle--current');
+                circle.classList.add('fase__indicator__circle--past');
             }
             else if (Number(textContent) === props.currentPhase!) {
-                circle.classList.remove('fase__Indicator__circle--future');
-                circle.classList.remove('fase__Indicator__circle--past');
-                circle.classList.add('fase__Indicator__circle--current');
+                circle.classList.remove('fase__indicator__circle--future');
+                circle.classList.remove('fase__indicator__circle--past');
+                circle.classList.add('fase__indicator__circle--current');
             }
             else {
-                circle.classList.remove('fase__Indicator__circle--past');
-                circle.classList.remove('fase__Indicator__circle--current');
-                circle.classList.add('fase__Indicator__circle--future');
+                circle.classList.remove('fase__indicator__circle--past');
+                circle.classList.remove('fase__indicator__circle--current');
+                circle.classList.add('fase__indicator__circle--future');
             }
         });
     }
@@ -44,17 +44,17 @@
 </script>
 
 <template>
-    <div class="fase__Indicator">
+    <div class="fase__indicator">
         <div v-for="visual in visuals" @click="handleClick">
-            <div v-if="visual === props.currentPhase" class="fase__Indicator__circle fase__Indicator__circle--current">{{ visual }}</div>
-            <div v-else-if="visual < props.currentPhase!" class="fase__Indicator__circle fase__Indicator__circle--past">{{ visual }}</div>
-            <div v-else class="fase__Indicator__circle fase__Indicator__circle--future">{{ visual }}</div>
+            <div v-if="visual === props.currentPhase" class="fase__indicator__circle fase__indicator__circle--current">{{ visual }}</div>
+            <div v-else-if="visual < props.currentPhase!" class="fase__indicator__circle fase__indicator__circle--past">{{ visual }}</div>
+            <div v-else class="fase__indicator__circle fase__indicator__circle--future">{{ visual }}</div>
         </div>
     </div>
 </template>
 
 <style scoped>
-    .fase__Indicator{
+    .fase__indicator{
         display: flex;
         flex-direction: row;
         justify-content: center;
@@ -66,7 +66,7 @@
         left: 0;
     }
 
-    .fase__Indicator__circle{
+    .fase__indicator__circle{
         width: 40px;
         height: 40px;
         display: flex;
@@ -78,21 +78,66 @@
         cursor: pointer;
     }
 
-    .fase__Indicator__circle--current, .fase__Indicator__circle--past{
+    .fase__indicator__circle--current, .fase__indicator__circle--past{
         background-color: var(--mainColorLight);
         border: 3px solid var(--mainColor);
     }
 
-    .fase__Indicator__circle--past{
+    .fase__indicator__circle--past{
         opacity: 0.5;
     }
 
-    .fase__Indicator__circle--future{
+    .fase__indicator__circle--future{
         background-color: var(--offWhite);
         border: 3px solid var(--lightGray);
     }
 
-    .fase__Indicator__circle--past, .fase__Indicator__circle--future{
+    .fase__indicator__circle--past, .fase__indicator__circle--future{
         color: var(--gray);
+    }
+
+    .fase__indicator__circle:hover{
+        background-color: var(--mainColorLight);
+        border-color: var(--mainColor);
+    }
+
+    @media screen and (max-width: 1360px) {
+        .fase__indicator{
+            width: 100%;
+            height: 80px;
+            top: 80px;
+        }
+    }
+
+    @media screen and (max-width: 1024px) {
+        .fase__indicator{
+            flex-direction: column;
+            height: calc(100% - 100px);
+            width: 60px;
+            position: absolute;
+            top: 100px;
+            left: calc(100% - 60px);
+        }
+
+        .fase__indicator__circle{
+            margin: 0.8rem 0;
+            width: 30px;
+            height: 30px;
+            font-size: 0.8rem;
+        }
+
+        .fase__indicator__circle--current, .fase__indicator__circle--past{
+            border: 2px solid var(--mainColor);
+        }
+
+        .fase__indicator__circle--future{
+            border: 2px solid var(--lightGray);
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        .fase__indicator{
+            z-index: 10;
+        }
     }
 </style>

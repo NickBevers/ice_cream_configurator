@@ -55,7 +55,7 @@
     <div class="cup__container">
         <div class="phase3__description">
             <h1>Step 3</h1>
-            <p>Customize your cup! Pick a colour you'd like your cup to be.</p>
+            <p>Customize your cup! <br class="description__break"> Pick a colour you'd like your cup to be.</p>
         </div>
         <div class="customization__options">
             <div class="option__container">
@@ -119,8 +119,13 @@
     .phase3__description p{
         margin: 0;
         font-size: 1rem;
-        width: 26.5rem;
+        width: 450px;
+        text-align: left;
         /* margin-bottom: 2rem; */
+    }
+
+    .description__break{
+        display: none;
     }
 
     .customization__options{
@@ -144,7 +149,7 @@
         flex-direction: column;
         align-items: start;
         justify-content: center;
-        width: clamp(12.5rem, 100%, 26.5rem);
+        width: clamp(12.5rem, 100%, 450px);
     }
 
     .image__option{
@@ -223,70 +228,48 @@
         object-fit: contain;
     }
 
-    .button__container{
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-evenly;
-        width: 100%;
+    @media screen and (max-width: 1024px) {
+        .option__container{
+            width: 90%;
+            margin-left: 10%;
+        }
+
+        .description__break{
+            display: block;
+        }
+
+        .phase3__description{
+            width: 95%;
+            margin-left: 5%;
+            justify-content: center;
+        }
+
+        .phase3__description p{
+            width: 100%;
+            padding-left: 1.25rem;
+        }
     }
 
-    .nextStep{
-        width: 12.5rem;
-        margin-top: 2rem;
-        margin-bottom: 0;
-        padding: 0.8rem 2rem;
-        background-color: var(--offBlack);
-        color: white;
-        font-size: 1.25rem;
-        font-weight: 600;
-        text-decoration: none;
-        transition: background-color 0.25s ease-in-out, color 0.25s ease-in-out;
-        cursor: pointer;
-        max-width: 12.5rem;
-    }
+    @media screen and (max-width: 768px){
+        .cup__container{
+            margin-top: 0;
+            width: 90%;
+            height: 90%;
+        }
+        .phase3__description{
+            width: 100%;
+            margin-left: 0;
+            justify-content: center;
+        }
 
-    .previousStep{
-        width: 12.5rem;
-        padding-top: 0.8rem;
-        padding-bottom: 0.8rem;
-        padding-left: 0;
-        padding-right: 0;
-        margin: 2rem 0 0 0;
-        cursor: pointer;
-        font-size: 1.25rem;
-    }
+        .phase3__description p{
+            width: 100%;
+            padding-left: 0;
+            text-align: center;
+        }
 
-    .nextStep:hover{
-        background-color: var(--mainColor);
-        color: black;
-    }
-
-    .previousStep:hover{
-        color: var(--mainColor);
-
-    }
-
-    .arrow--right{
-        filter: invert(100%);
-        height: 1.2rem;
-        margin-bottom: -0.2rem;
-        margin-left: 0.5rem;
-        transition: all 0.25s ease-in-out;
-    }
-
-    .arrow--left{
-        height: 1.2rem;
-        margin-bottom: -0.2rem;
-        margin-left: 0;
-        margin-right: 0.5rem;
-    }
-
-    .nextStep:hover .arrow--right{
-        filter: invert(0%);
-    }
-
-    .previousStep:hover .arrow--left{
-        filter: invert(84%) sepia(45%) saturate(610%) hue-rotate(192deg) brightness(102%) contrast(101%);
+        .color__option__color{
+            margin-right: 1rem;
+        }
     }
 </style>

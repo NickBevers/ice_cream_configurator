@@ -88,7 +88,6 @@
         display: flex;
         flex-direction: row;
         align-items: center;
-        justify-content: space-evenly start;
         flex-wrap: wrap;
         width: 100%;
     }
@@ -101,6 +100,7 @@
         margin: 1%;
         width: 40%;
         padding: 0 10%;
+        flex: 0 0 calc(50% - 20px);
     }
 
     .flavour__option img{
@@ -121,33 +121,10 @@
         color: var(--offBlack);
     }
 
-    .nextStep{
-        margin-top: 2rem;
-        padding: 0.8rem 2rem;
-        background-color: var(--offBlack);
-        color: white;
-        font-size: 1.25rem;
-        font-weight: 600;
-        text-decoration: none;
-        transition: background-color 0.25s ease-in-out, color 0.25s ease-in-out;
-        cursor: pointer;
+    @media screen and (max-width: 768px) {
+        .flavour__container{
+            margin-top: 0;
+            height: 90%;
+        }
     }
-
-    .nextStep:hover{
-        background-color: var(--mainColor);
-        color: black;
-    }
-
-    .arrow--right{
-        filter: invert(100%);
-        height: 1.2rem;
-        margin-bottom: -0.15rem;
-        margin-left: 0.5rem;
-        transition: all 0.25s ease-in-out;
-    }
-
-    .nextStep:hover .arrow--right{
-        filter: invert(0%);
-    }
-
 </style>

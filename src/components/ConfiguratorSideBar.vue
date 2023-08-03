@@ -50,19 +50,18 @@
         <Phase1 v-if="props.currentPhase === 1" @set-flavour="changeFlavour" @change-phase="changePhase" :flavour="props.flavour ?props.flavour :''"/>
         <Phase2 v-if="props.currentPhase === 2" @set-topping="changeTopping" @change-phase="changePhase" :topping="props.topping ?props.topping :''"/>
         <Phase3 v-if="props.currentPhase === 3" @set-color="changeColor" @set-logo="changeLogo" @change-phase="changePhase" :color="props.color" :image="props.image"/>
-        <Phase4 v-if="props.currentPhase === 4" @create-soft-serve="makeCreation" />
+        <Phase4 v-if="props.currentPhase === 4" @create-soft-serve="makeCreation" @change-phase="changePhase"/>
     </div>
 </template>
 
 <style scoped>
-
     .configurator-side-bar{
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        width: 33%;
-        height: calc(100% - 150px);
+        width: 100%;
+        height: 100%;
         background-color: transparent;
     }
 </style>

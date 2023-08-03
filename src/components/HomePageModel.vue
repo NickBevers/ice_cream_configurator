@@ -8,8 +8,13 @@
     onMounted(() => {
         // get the width and height of the backdrop container
         let { width, height } = document.querySelector('.three__container')?.getBoundingClientRect() as DOMRect;
-        // height < 750 ? height = document.querySelector('.backdrop')!.getBoundingClientRect()['height'] : height = height;
-        height < 750 ? height = 900 : height = height;
+        if (window.innerWidth < 480) {
+            height < 750 ? height = window.innerHeight/2 : height = height;
+        } else if (window.innerWidth < 768) {
+            height < 750 ? height = window.innerHeight/10 * 6 : height = height;
+        } else {
+            height < 750 ? height = 900 : height = height;
+        }
         
         // set up the scene, camera, renderer, controls, loader, and dracoLoader
         const scene = new THREE.Scene();
@@ -35,7 +40,6 @@
 
         // add the renderer to the page
         document.querySelector('.three__container')!.appendChild(renderer.domElement);
-        document.querySelector<HTMLElement>('.three__container')!.style.paddingTop = '2rem';
     
         // set the camera position and make the model bigger
         camera.position.z = 5;
@@ -44,10 +48,26 @@
         
         // dracoLoader.setDecoderPath('/node_modules/three/examples/jsm/libs/draco/');
         dracoLoader.setDecoderPath( 'https://www.gstatic.com/draco/v1/decoders/' );
+
+        // if screen is smaller than 500px, make the model smaller
+        if (width < 500) {
+            camera.zoom = 1.1;
+            camera.updateProjectionMatrix();
+        }
+
+        // if screen is smaller than 768px, make the model smaller
+        if (window.innerWidth < 480) {
+            camera.zoom = 1.9;
+            camera.updateProjectionMatrix();
+        } else if (window.innerWidth < 768) {
+            camera.zoom = 1.5;
+            camera.updateProjectionMatrix();
+        }
+
         
         // dracoLoader.preload();
         loader.setDRACOLoader(dracoLoader);
-        const loadModel = (position: Array<number> = [0, 0.15, 0], rotation: Array<number> = [0.2, 0, 0], scale: Array<number> = [1, 1, 1]) => {
+        const loadModel = (position: Array<number> = [0, 0.1, 0], rotation: Array<number> = [0.2, 0, 0], scale: Array<number> = [1, 1, 1]) => {
             // Load the donut model
             loader.load(
                 '/src/assets/Models/homepage_model.gltf',
@@ -124,8 +144,24 @@
         width: 100%;
         height: 100%;
         position: absolute;
-        top: 32px;
+        top: 0;
         left: 0;
         z-index: 1;
+    }
+
+    @media screen and (max-width: 768px) {
+        .three__container{
+            width: 70%;
+            position: absolute;
+            right: 5%;
+            left: auto;
+        }
+    }
+
+    @media screen and (max-width: 480px) {
+        .three__container{
+            width: 100%;
+            right: 0;
+        }
     }
 </style>
