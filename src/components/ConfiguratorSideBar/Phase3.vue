@@ -200,6 +200,12 @@
         font-weight: 600;
     }
 
+    label{
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
     input[type="file"]{
         display: none;
         appearance: none;
