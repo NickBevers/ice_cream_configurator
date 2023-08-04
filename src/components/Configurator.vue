@@ -4,6 +4,11 @@
     import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
     import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js';
     import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
+    import sprinklesModel from '../assets/Models/sprinkles.gltf'
+    import mnmsModel from '../assets/Models/mnms.gltf'
+    import sauceModel from '../assets/Models/sauce.gltf'
+    import softserveModel from '../assets/Models/softserve.gltf';
+    import logoSemiBold from '../assets/Images/logo_semibold.jpg';
 
     const props = defineProps({
         currentPhase: Number,
@@ -17,7 +22,7 @@
     const flavour: Ref<string> = ref(props.flavour ?props.flavour :'');
     const topping: Ref<string> = ref(props.topping ?props.topping :'');
     const color: Ref<string> = ref(props.color ?props.color :'');
-    const image: Ref<string> = ref(props.image ?props.image :'/src/assets/Images/logo_semibold.jpg');
+    const image: Ref<string> = ref(props.image ?props.image :logoSemiBold);
 
     watch(props, (newValue) => {
         flavour.value = newValue.flavour!;
@@ -28,7 +33,6 @@
 
     const loader = new GLTFLoader();
     const dracoLoader = new DRACOLoader();
-    const softserveModel = '/src/assets/Models/softserve.gltf';
 
     onMounted(() => {
         const domElement = document.querySelector<HTMLElement>(".configurator__threejs")!;
@@ -193,7 +197,7 @@
 
         const loadSprinkles = (position = [0, 0, 0], scale = [1, 1, 1]) => {
             loader.load(
-                '/src/assets/Models/sprinkles.gltf',
+                sprinklesModel,
 
                 (gltf) => {
                     const root = gltf.scene;
@@ -215,7 +219,7 @@
 
         const loadMnm = (position = [0, 0, 0], scale = [1, 1, 1]) => {
             loader.load(
-                '/src/assets/Models/mnms.gltf',
+                mnmsModel,
 
                 (gltf) => {
                     const root = gltf.scene;
@@ -238,7 +242,7 @@
         // load the chocolate sauce
         const loadSauce = (position = [0, 0, 0], scale = [1, 1, 1], color: THREE.ColorRepresentation = 0) => {
             loader.load(
-                '/src/assets/Models/sauce.gltf',
+                sauceModel,
 
                 (gltf) => {
                     const root = gltf.scene;

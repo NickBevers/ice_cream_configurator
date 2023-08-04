@@ -3,6 +3,6 @@ import vue from '@vitejs/plugin-vue'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-    plugins: [vue()],
     assetsInclude: ['**/*.svg', '**/*.png', '**/*.jpg', '**/*.glb', '**/*.gltf'],
+    plugins: [vue()],
 })

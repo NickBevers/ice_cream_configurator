@@ -4,6 +4,7 @@
     import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
     import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
     import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js';
+    import homepageModel from '../assets/Models/homepage_model.gltf';
     
     onMounted(() => {
         // get the width and height of the backdrop container
@@ -70,7 +71,7 @@
         const loadModel = (position: Array<number> = [0, 0.1, 0], rotation: Array<number> = [0.2, 0, 0], scale: Array<number> = [1, 1, 1]) => {
             // Load the donut model
             loader.load(
-                '/src/assets/Models/homepage_model.gltf',
+                homepageModel,
 
                 (gltf) => {
                     const root = gltf.scene;
