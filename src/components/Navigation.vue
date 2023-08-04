@@ -1,11 +1,12 @@
 <script setup lang="ts">
-import Icon from './Icon.vue'
+    import Icon from './Icon.vue'
+    import logoSemibold from '../assets/Images/logo_semibold.svg'
 </script>
 
 <template>
     <nav class="navigation">
         <div class="navigation__icon">
-            <router-link to="/"><Icon src="/src/assets/Images/logo_semibold.svg" /></router-link>
+            <router-link to="/"><Icon :src="logoSemibold" /></router-link>
         </div>
         <div class="navigation__links">
             <router-link to="/" class="navigation__link">Home</router-link>
